@@ -1,45 +1,26 @@
 import React from 'react';
+// frontend/bench_bnb.jsx
+
 import ReactDOM from 'react-dom';
+import configureStore from './store/store';
+import Root from './components/root';
 
 
 
+import { login } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const store = configureStore();
+
+  // TESTING START
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  window.login = login;
+  // TESTING END
+
   const root = document.getElementById('root');
-  window.signin = signin;
-  window.test = test;
-  ReactDOM.render(<h1> Welcome Bitches</h1>, root);
+  ReactDOM.render(<Root store={ store }/>, root);
 });
 
 
-
-const test = {username: "mauricio", password: "password"};
-
-const newUser = {username: "lisaMorocho", password: "password"};
-
-
-const signin = (user) => {
-  return $.ajax({
-    url: '/api/session',
-    method: 'POST',
-    data: {user}
-  });
-};
-
-
-const signout = () => {
-  return $.ajax({
-    url: '/api/session',
-    method: 'DELETE'
-  });
-};
-
-
-
-const create = (user) => {
-  return $.ajax({
-    url: '/api/users',
-    method: 'POST',
-    data: {user}
-  });
-};
+const user = {username: "mauricio", password: "password"};
