@@ -6,15 +6,15 @@ Redirect,
 Switch,
 Link,
 HashRouter} from 'react-router-dom';
-
+import {AuthRoute} from '../util/route_util';
 
 
 const App = () => (
   <div>
     <h1>BenchBNB</h1>
     <GreetingContainer />
-    <Route path="/login" component={SessionFormContainer} />
-    <Route path="/signup" component={SessionFormContainer} />
+    <AuthRoute path="/login" component={SessionFormContainer} />
+    <AuthRoute path="/signup" component={SessionFormContainer} />
   </div>
 );
 
